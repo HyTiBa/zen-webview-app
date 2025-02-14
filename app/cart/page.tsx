@@ -1,13 +1,17 @@
 "use client"
 import Main from "@/components/Main";
 import { Button, Card, CardContent } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Cart } from "@/functions/CartFunctions";
 import Link from "next/link";
 import { CartItem } from "@/contexts/cartContext";
 const CartPage = () => {
-  const getCart = JSON.parse(localStorage.getItem("cart") || "[]")
+ let getCart:CartItem[]  = []
+  useEffect(()=>{
+     // eslint-disable-next-line react-hooks/exhaustive-deps
+     getCart = Cart.getCart()
+  },[])
   const [cart, setCart] = useState(getCart);
 
   const updateQuantity = (itemIndex: number, delta: number) => {
