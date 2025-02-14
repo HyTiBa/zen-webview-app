@@ -8,7 +8,7 @@ const ShopPage = () => {
         <Main>
             <div className='flex justify-end p-4'>
                 <Link href={'./cart'}>
-                <Image src={'./images/shop/cart.png'} width={30} height={30} alt={''}/>
+                <Image src={'/images/shop/cart.png'} width={30} height={30} alt={''}/>
                 </Link>
             </div>
             <div className='gap-6 mr-4 ml-4 flex flex-col'>

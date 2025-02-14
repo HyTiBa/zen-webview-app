@@ -5,8 +5,9 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Cart } from "@/functions/CartFunctions";
 import Link from "next/link";
+const getCart = Cart.getCart()
 const CartPage = () => {
-  const [cart, setCart] = useState(Cart.getCart());
+  const [cart, setCart] = useState(getCart);
 
   const updateQuantity = (itemIndex: number, delta: number) => {
     setCart((prevItems) =>
