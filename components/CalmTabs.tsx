@@ -4,7 +4,7 @@ import { JSX, useEffect, useRef, useState } from "react";
 export default function TabsComponent({
   items,
 }: {
-  items: { title: String; content: JSX.Element }[];
+  items: { title: string; content: JSX.Element }[];
 }) {
   const firstBtnRef = useRef<HTMLButtonElement | null>(null);
   useEffect(() => {

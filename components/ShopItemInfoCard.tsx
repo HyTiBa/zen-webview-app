@@ -1,9 +1,9 @@
 import React from "react";
 import Image from "next/image";
 export type ShopItem = {
-  image: String;
-  title: String;
-  featureList: String[];
+  image: string;
+  title: string;
+  featureList: string[];
   price: number;
 };
 import AddToCartButton from "./AddToCartButton";
@@ -12,7 +12,7 @@ const ShopItemInfoCard = ({ image, title, featureList, price }: ShopItem) => {
   return (
     <div className="max-w-sm mx-auto p-6 bg-white rounded-2xl shadow-lg text-start">
       <div className="mb-4">
-        <img src={`${image}`} className="mx-auto rounded-lg" />
+        <Image src={`${image}`} className="mx-auto rounded-lg" alt={""} />
       </div>
 
       <h2 className="text-2xl font-bold text-[#5B2C8B] mb-2">{title}</h2>
@@ -39,7 +39,7 @@ const ShopItemInfoCard = ({ image, title, featureList, price }: ShopItem) => {
 
 export default ShopItemInfoCard;
 
-export function priceDisplay(number: number): String {
+export function priceDisplay(number: number): string {
   const numStr: string = number.toString();
 
   const result: string = numStr

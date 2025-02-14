@@ -1,6 +1,5 @@
 "use client";
-import { CartContext } from "@/contexts/cartContext";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { ShopItem } from "./ShopItemInfoCard";
 import Link from "next/link";
 import { Cart } from "@/functions/CartFunctions";
