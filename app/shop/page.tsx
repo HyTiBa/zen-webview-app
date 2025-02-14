@@ -25,22 +25,22 @@ export default ShopPage
 
 const ShopItems: ShopItem[] = [
     {
-        image: "/images/shop/gift.png",
+        image: "./images/shop/gift.png",
         title: "Wellness Gift Card",
         featureList: ["Ideal for any occasion!", "rsonalize your gift with a Zen Wellness experience.", "Give the gift of relaxation, available in various denominations."],
         price: 600000
     }, {
-        image: "/images/shop/couple.png",
+        image: "./images/shop/couple.png",
         title: "Couple's Massage Voucher",
         featureList: ["A shared journey of bliss for you and your special someone!", "Enjoy a memorable wellness experience together.", "Strengthen your bond with the gift of relaxation."],
         price: 1200000
     }, {
-        image: "/images/shop/membership.png",
+        image: "./images/shop/membership.png",
         title: "Membership Card",
         featureList: ["Elevate well-being with ongoing benefits.", "Access exclusive perks and discounts.", "Commit to your wellness journey with our membership options."],
         price: 8100000
     }, {
-        image: "/images/shop/package.png",
+        image: "./images/shop/package.png",
         title: "Wellness Massage Packages",
         featureList: ["Save with our bundled packages!", 'Perfect for frequent wellness enthusiasts.', 'Choose from 3 or 12-packs for ultimate flexibility.'],
         price: 1692000
