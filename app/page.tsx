@@ -1,7 +1,9 @@
-import React, { ReactNode } from "react";
+import Main from "@/components/Main";
 
-const Main = ({ children }: { children: ReactNode }) => {
-  return <main>{children}</main>;
-};
-
-export default Main;
+export default function Home() {
+  return (
+    <Main>
+      <div></div>
+    </Main>
+  );
+}
