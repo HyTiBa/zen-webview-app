@@ -7,8 +7,9 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const page = async ({ searchParams }: { searchParams: any }) => {
+const page = async (
+  // { searchParams }: { searchParams: any }
+) => {
   // const app = new Slack.App({
   //   signingSecret: process.env.SLACK_SIGNIN_SECRET,
   //   token: process.env.SLACK_BOT_TOKEN,
