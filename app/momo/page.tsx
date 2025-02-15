@@ -1,4 +1,4 @@
-import { redirect } from "next/navigation";
+import { ReadonlyURLSearchParams, redirect } from "next/navigation";
 import crypto from "crypto";
 
 // import Slack from "@slack/bolt";
@@ -8,7 +8,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 
-const page = async ({ searchParams }: { searchParams:  Promise<{cart: string; name: string; total: string }> }) => {
+const page = async ({ searchParams }: { searchParams:  ReadonlyURLSearchParams }) => {
   // const app = new Slack.App({
   //   signingSecret: process.env.SLACK_SIGNIN_SECRET,
   //   token: process.env.SLACK_BOT_TOKEN,
