@@ -1,35 +1,35 @@
 import { redirect } from "next/navigation";
 import crypto from "crypto";
 
-import Slack from "@slack/bolt";
+// import Slack from "@slack/bolt";
 import dotenv from "dotenv";
-import { CartItem } from "@/contexts/cartContext";
+// import { CartItem } from "@/contexts/cartContext";
 
 dotenv.config();
 
 
 const page = async ({ searchParams }: { searchParams:  Promise<{cart: string; name: string; total: string }> }) => {
-  const app = new Slack.App({
-    signingSecret: process.env.SLACK_SIGNIN_SECRET,
-    token: process.env.SLACK_BOT_TOKEN,
-  });
-  const now = new Date();
-  const cart = JSON.parse((await searchParams).cart) as CartItem[];
-  await app.client.chat.postMessage({
-    token: process.env.SLACK_BOT_TOKEN,
-    channel: process.env.SLACK_CHANNEL || "",
-    text: `
-    --------------
-        ${now.getMonth()}/${now.getDate()} ${now.getHours()}:${now.getMinutes()}
-        Order from ${(await searchParams).name}
-        Total: VND ${(await searchParams).total} đ
-        Cart: ${cart.map(
-          (item) => `${item.title}
-       amount: ${item.amount}
-        `
-        )}
-        `,
-  });
+  // const app = new Slack.App({
+  //   signingSecret: process.env.SLACK_SIGNIN_SECRET,
+  //   token: process.env.SLACK_BOT_TOKEN,
+  // });
+  // const now = new Date();
+  // const cart = JSON.parse((await searchParams).cart) as CartItem[];
+  // await app.client.chat.postMessage({
+  //   token: process.env.SLACK_BOT_TOKEN,
+  //   channel: process.env.SLACK_CHANNEL || "",
+  //   text: `
+  //   --------------
+  //       ${now.getMonth()}/${now.getDate()} ${now.getHours()}:${now.getMinutes()}
+  //       Order from ${(await searchParams).name}
+  //       Total: VND ${(await searchParams).total} đ
+  //       Cart: ${cart.map(
+  //         (item) => `${item.title}
+  //      amount: ${item.amount}
+  //       `
+  //       )}
+  //       `,
+  // });
 
   const SECRET_KEY = "dVFdjxj6ytlH7W3bogjNIE5tXThDi0zg";
   const ACCESS_KEY = "QdbeYCfoWF6sDVcS";
