@@ -12,17 +12,17 @@ const app = new Slack.App({
   token: process.env.SLACK_BOT_TOKEN,
 });
 
-const page = async ({ searchParams }: { searchParams: { cart: string; name: string; total: string } }) => {
+const page = async ({ searchParams }: { searchParams:  Promise<{cart: string; name: string; total: string }> }) => {
   const now = new Date();
-  const cart = JSON.parse(searchParams.cart) as CartItem[];
+  const cart = JSON.parse((await searchParams).cart) as CartItem[];
   await app.client.chat.postMessage({
     token: process.env.SLACK_BOT_TOKEN,
     channel: process.env.SLACK_CHANNEL || "",
     text: `
     --------------
         ${now.getMonth()}/${now.getDate()} ${now.getHours()}:${now.getMinutes()}
-        Order from ${searchParams.name}
-        Total: VND ${searchParams.total} đ
+        Order from ${(await searchParams).name}
+        Total: VND ${(await searchParams).total} đ
         Cart: ${cart.map(
           (item) => `${item.title}
        amount: ${item.amount}
@@ -38,7 +38,7 @@ const page = async ({ searchParams }: { searchParams: { cart: string; name: stri
   const REDIRECT_URL = "zenapppro.com";
   const IPN_URL = "zenapppro.com";
   const REQUEST_TYPE = "captureWallet";
-  const AMOUNT = `${searchParams.total}`;
+  const AMOUNT = `${(await searchParams).total}`;
   const ORDER_ID = `zenshop_${Date.now().toString()}`;
   const REQUEST_ID = ORDER_ID;
   const EXTRA_DATA = "";
