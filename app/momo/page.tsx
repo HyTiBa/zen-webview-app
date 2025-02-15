@@ -1,6 +1,3 @@
-'use client'
-// import { Cart } from "@/functions/CartFunctions";
-// import { METHODS } from "http";
 import { redirect } from "next/navigation";
 import crypto from "crypto";
 
