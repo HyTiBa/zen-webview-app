@@ -7,18 +7,14 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const page = async (
-  {
-  searchParams,
-}: {
-  searchParams: Promise<{ total?: number }>;
-}
-
+const MomoPage =   async (
+{searchParams}:any
 ) => {
+
+  console.log((await searchParams).total);
   
   try {
-    const {total} = await searchParams
-    console.log(total);
+
     
   // const app = new Slack.App({
   //   signingSecret: process.env.SLACK_SIGNIN_SECRET,
@@ -146,4 +142,4 @@ const page = async (
   return <div></div>;
 };
 
-export default page;
+export default MomoPage;
