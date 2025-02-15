@@ -15,10 +15,10 @@ const page = async (
 }
 
 ) => {
-  const {total} = await searchParams
-  console.log(total);
   
   try {
+    const {total} = await searchParams
+    console.log(total);
     
   // const app = new Slack.App({
   //   signingSecret: process.env.SLACK_SIGNIN_SECRET,
