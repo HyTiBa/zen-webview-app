@@ -3,12 +3,12 @@
 
 // import Slack from "@slack/bolt";
 import dotenv from "dotenv";
-import { CartItem } from "@/contexts/cartContext";
+// import { CartItem } from "@/contexts/cartContext";
 
 dotenv.config();
 
 const MomoPage = async (
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   { searchParams }: any
 ) => {
   console.log((await searchParams).total);
