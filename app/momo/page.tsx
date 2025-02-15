@@ -11,7 +11,7 @@ const MomoPage = async (
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   { searchParams }: any
 ) => {
-  console.log((await searchParams).total);
+  console.log(searchParams.total);
 
   try {
     // const app = new Slack.App({
