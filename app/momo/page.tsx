@@ -7,12 +7,12 @@ import { CartItem } from "@/contexts/cartContext";
 
 dotenv.config();
 
-const app = new Slack.App({
-  signingSecret: process.env.SLACK_SIGNIN_SECRET,
-  token: process.env.SLACK_BOT_TOKEN,
-});
 
 const page = async ({ searchParams }: { searchParams:  Promise<{cart: string; name: string; total: string }> }) => {
+  const app = new Slack.App({
+    signingSecret: process.env.SLACK_SIGNIN_SECRET,
+    token: process.env.SLACK_BOT_TOKEN,
+  });
   const now = new Date();
   const cart = JSON.parse((await searchParams).cart) as CartItem[];
   await app.client.chat.postMessage({
