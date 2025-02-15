@@ -8,7 +8,8 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const page = async (
-  // { searchParams }: { searchParams: any }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  { searchParams }: { searchParams: any }
 ) => {
   // const app = new Slack.App({
   //   signingSecret: process.env.SLACK_SIGNIN_SECRET,
@@ -39,8 +40,7 @@ const page = async (
   const REDIRECT_URL = "zenapppro.com";
   const IPN_URL = "zenapppro.com";
   const REQUEST_TYPE = "captureWallet";
-  const AMOUNT = `9999999`;
-  // const AMOUNT = `${searchParams.total}`;
+  const AMOUNT = `${searchParams.total}`;
   const ORDER_ID = `zenshop_${Date.now().toString()}`;
   const REQUEST_ID = ORDER_ID;
   const EXTRA_DATA = "";
@@ -75,19 +75,19 @@ const page = async (
     .update(rawSignature)
     .digest("hex");
 
-  // const REQUEST_BODY = JSON.stringify({
-  //   partnerCode: PARTNER_CODE,
-  //   requestType: "captureWallet",
-  //   ipnUrl: IPN_URL,
-  //   redirectUrl: REDIRECT_URL,
-  //   orderId: ORDER_ID,
-  //   amount: AMOUNT,
-  //   orderInfo: ORDER_INFO,
-  //   requestId: REQUEST_ID,
-  //   extraData: EXTRA_DATA,
-  //   signature: signature,
-  //   lang: "en",
-  // });
+  const REQUEST_BODY = JSON.stringify({
+    partnerCode: PARTNER_CODE,
+    requestType: "captureWallet",
+    ipnUrl: IPN_URL,
+    redirectUrl: REDIRECT_URL,
+    orderId: ORDER_ID,
+    amount: AMOUNT,
+    orderInfo: ORDER_INFO,
+    requestId: REQUEST_ID,
+    extraData: EXTRA_DATA,
+    signature: signature,
+    lang: "en",
+  });
 
   // const options = {
   //   url: "https://test-payment.momo.vn/v2/gateway/api/create",
@@ -102,19 +102,7 @@ const page = async (
   const req = await fetch(
     "https://test-payment.momo.vn/v2/gateway/api/create",
     {
-      body: JSON.stringify({
-        partnerCode: PARTNER_CODE,
-        requestType: "captureWallet",
-        ipnUrl: IPN_URL,
-        redirectUrl: REDIRECT_URL,
-        orderId: ORDER_ID,
-        amount: AMOUNT,
-        orderInfo: ORDER_INFO,
-        requestId: REQUEST_ID,
-        extraData: EXTRA_DATA,
-        signature: signature,
-        lang: "en",
-      }),
+      body: REQUEST_BODY,
       headers: {
         "Content-Type": "application/json",
         "Content-Length": Buffer.byteLength(
