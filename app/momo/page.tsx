@@ -8,8 +8,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const page = async (
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  { searchParams }: { searchParams: any }
+  { searchParams }: { searchParams: Promise<{total?:number}> }
 ) => {
   // const app = new Slack.App({
   //   signingSecret: process.env.SLACK_SIGNIN_SECRET,
@@ -40,7 +39,7 @@ const page = async (
   const REDIRECT_URL = "zenapppro.com";
   const IPN_URL = "zenapppro.com";
   const REQUEST_TYPE = "captureWallet";
-  const AMOUNT = `${searchParams.total}`;
+  const AMOUNT = `${(await searchParams).total}`;
   const ORDER_ID = `zenshop_${Date.now().toString()}`;
   const REQUEST_ID = ORDER_ID;
   const EXTRA_DATA = "";
