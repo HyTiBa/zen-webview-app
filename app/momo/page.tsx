@@ -8,12 +8,16 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const page = async (
-//   {
-//   searchParams,
-// }: {
-//   searchParams: Promise<{ total?: number }>;
-// }
+  {
+  searchParams,
+}: {
+  searchParams: Promise<{ total?: number }>;
+}
+
 ) => {
+  const {total} = await searchParams
+  console.log(total);
+  
   try {
     
   // const app = new Slack.App({
