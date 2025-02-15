@@ -14,10 +14,6 @@ const page = async ({
 }) => {
   try {
     
-  } catch (error) {
-    return error;
-  }
-
   // const app = new Slack.App({
   //   signingSecret: process.env.SLACK_SIGNIN_SECRET,
   //   token: process.env.SLACK_BOT_TOKEN,
@@ -135,6 +131,11 @@ const page = async ({
   console.log(res.payUrl);
   console.log(Date.now());
   redirect(res.payUrl);
+
+  } catch (error) {
+    return error;
+  }
+
 
   return <div></div>;
 };
