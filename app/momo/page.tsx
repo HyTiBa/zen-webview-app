@@ -38,7 +38,8 @@ const page = async ({ searchParams }: { searchParams: any }) => {
   const REDIRECT_URL = "zenapppro.com";
   const IPN_URL = "zenapppro.com";
   const REQUEST_TYPE = "captureWallet";
-  const AMOUNT = `${searchParams.total}`;
+  const AMOUNT = `9999999`;
+  // const AMOUNT = `${searchParams.total}`;
   const ORDER_ID = `zenshop_${Date.now().toString()}`;
   const REQUEST_ID = ORDER_ID;
   const EXTRA_DATA = "";
