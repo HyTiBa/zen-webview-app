@@ -10,27 +10,8 @@ dotenv.config();
 const page = async (
   { searchParams }: { searchParams: Promise<{total?:number}> }
 ) => {
-  // const app = new Slack.App({
-  //   signingSecret: process.env.SLACK_SIGNIN_SECRET,
-  //   token: process.env.SLACK_BOT_TOKEN,
-  // });
-  // const now = new Date();
-  // const cart = JSON.parse((await searchParams).cart) as CartItem[];
-  // await app.client.chat.postMessage({
-  //   token: process.env.SLACK_BOT_TOKEN,
-  //   channel: process.env.SLACK_CHANNEL || "",
-  //   text: `
-  //   --------------
-  //       ${now.getMonth()}/${now.getDate()} ${now.getHours()}:${now.getMinutes()}
-  //       Order from ${(await searchParams).name}
-  //       Total: VND ${(await searchParams).total} đ
-  //       Cart: ${cart.map(
-  //         (item) => `${item.title}
-  //      amount: ${item.amount}
-  //       `
-  //       )}
-  //       `,
-  // });
+
+await searchParams.then(async ({total})=>{
 
   const SECRET_KEY = "dVFdjxj6ytlH7W3bogjNIE5tXThDi0zg";
   const ACCESS_KEY = "QdbeYCfoWF6sDVcS";
@@ -39,7 +20,7 @@ const page = async (
   const REDIRECT_URL = "zenapppro.com";
   const IPN_URL = "zenapppro.com";
   const REQUEST_TYPE = "captureWallet";
-  const AMOUNT = `${(await searchParams).total}`;
+  const AMOUNT = `${total}`;
   const ORDER_ID = `zenshop_${Date.now().toString()}`;
   const REQUEST_ID = ORDER_ID;
   const EXTRA_DATA = "";
@@ -127,6 +108,30 @@ const page = async (
   console.log(res.payUrl);
   console.log(Date.now());
   redirect(res.payUrl);
+})
+
+  // const app = new Slack.App({
+  //   signingSecret: process.env.SLACK_SIGNIN_SECRET,
+  //   token: process.env.SLACK_BOT_TOKEN,
+  // });
+  // const now = new Date();
+  // const cart = JSON.parse((await searchParams).cart) as CartItem[];
+  // await app.client.chat.postMessage({
+  //   token: process.env.SLACK_BOT_TOKEN,
+  //   channel: process.env.SLACK_CHANNEL || "",
+  //   text: `
+  //   --------------
+  //       ${now.getMonth()}/${now.getDate()} ${now.getHours()}:${now.getMinutes()}
+  //       Order from ${(await searchParams).name}
+  //       Total: VND ${(await searchParams).total} đ
+  //       Cart: ${cart.map(
+  //         (item) => `${item.title}
+  //      amount: ${item.amount}
+  //       `
+  //       )}
+  //       `,
+  // });
+
 
   return <div>page</div>;
 };
