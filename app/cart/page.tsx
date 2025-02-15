@@ -11,6 +11,7 @@ const CartPage = () => {
   useEffect(()=>{
      // eslint-disable-next-line react-hooks/exhaustive-deps
      getCart = Cart.getCart()
+     setCart(getCart)
   },[])
   const [cart, setCart] = useState(getCart);
 
