@@ -1,19 +1,16 @@
 // import { redirect } from "next/navigation";
 // import crypto from "crypto";
-import { cookies } from "next/headers";
 // import Slack from "@slack/bolt";
 import dotenv from "dotenv";
 // import { CartItem } from "@/contexts/cartContext";
 
 dotenv.config();
-
+export const dynamic = 'force-dynamic';
 const MomoPage = async (
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   { searchParams }: any
 ) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const cookiesInstance = await cookies()
-  console.log(searchParams.total);
+  console.log((await searchParams).total);
 
   try {
     // const app = new Slack.App({
