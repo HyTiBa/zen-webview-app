@@ -7,12 +7,21 @@ export type ShopItem = {
   price: number;
 };
 import AddToCartButton from "./AddToCartButton";
+import Link from "next/link";
 
 const ShopItemInfoCard = ({ image, title, featureList, price }: ShopItem) => {
   return (
     <div className="max-w-sm mx-auto p-6 bg-white rounded-2xl shadow-lg text-start">
+<Link href={
+  {
+    pathname:"/product",
+    query:{
+      item:JSON.stringify({title:title,image:image,featureList:featureList,price:price})
+    }
+  }
+}>
       <div className="mb-4">
-        <Image src={`${image}`} width={100} height={100} className="mx-auto rounded-lg" alt={""} />
+        <Image src={`${image}`} width={200} height={200} className="mx-auto rounded-lg" alt={""} />
       </div>
 
       <h2 className="text-2xl font-bold text-[#5B2C8B] mb-2">{title}</h2>
@@ -26,7 +35,7 @@ const ShopItemInfoCard = ({ image, title, featureList, price }: ShopItem) => {
       <p className="text-[#7A5C9C] text-2xl font-bold mb-4">
         {priceDisplay(price)}
       </p>
-
+</Link>
       <AddToCartButton
         image={image}
         title={title}

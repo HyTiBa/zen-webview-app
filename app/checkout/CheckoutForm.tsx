@@ -39,13 +39,13 @@ const CheckoutForm = ({cart,total}:{cart:CartItem[],total:number}) => {
               <input
                 type="radio"
                 value={"momo"}
-                onClick={() => {
+                onChange={() => {
                   setPayment("momo");
                   setPopupMessage("");
                 }}
                 checked={paymentType == "momo"}
               />
-              <Image width={50} height={50} src={"./momo.png"} alt={""} />
+              <Image width={50} height={50} src={"/momo.png"} alt={""} />
             </label>
             {/* <input type="radio" value={"card"} onClick={() => { setPayment("card") }} checked={paymentType == "card"} /> */}
           </div>
@@ -74,7 +74,7 @@ const CheckoutForm = ({cart,total}:{cart:CartItem[],total:number}) => {
                 }}
                 checked={delivery == "zalo"}
               />
-              <Image width={30} height={30} src={"./zalo.png"} alt={""} />
+              <Image width={30} height={30} src={"/zalo.png"} alt={""} />
             </label>
             <label className="flex flex-row gap-4">
               <input
@@ -84,7 +84,7 @@ const CheckoutForm = ({cart,total}:{cart:CartItem[],total:number}) => {
                 }}
                 checked={delivery == "mail"}
               />
-              <Image width={50} height={50} src={"./mail.png"} alt={""} />
+              <Image width={50} height={50} src={"/mail.png"} alt={""} />
             </label>
             <label className="flex flex-row gap-4">
               <input
@@ -94,7 +94,7 @@ const CheckoutForm = ({cart,total}:{cart:CartItem[],total:number}) => {
                 }}
                 checked={delivery == "deliver"}
               />
-              <Image width={50} height={50} src={"./deliver.png"} alt={""} />
+              <Image width={50} height={50} src={"/deliver.png"} alt={""} />
             </label>
           </div>
           {delivery === "zalo" ? (
