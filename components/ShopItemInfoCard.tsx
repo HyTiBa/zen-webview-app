@@ -1,4 +1,3 @@
-'use client'
 import React from "react";
 import Image from "next/image";
 export type ShopItem = {
@@ -8,36 +7,31 @@ export type ShopItem = {
   price: number;
 };
 import AddToCartButton from "./AddToCartButton";
-import Link from "next/link";
 
-const ShopItemInfoCard = ({ item}: {item:ShopItem}) => {
+const ShopItemInfoCard = ({ image, title, featureList, price }: ShopItem) => {
   return (
     <div className="max-w-sm mx-auto p-6 bg-white rounded-2xl shadow-lg text-start">
-      <Link href={{
-        pathname:"/product",
-        query:{
-          item: JSON.stringify(item)
-        }
-      }}>
       <div className="mb-4">
-        <Image src={`${item.image}`} width={200} height={200} className="mx-auto rounded-lg" alt={""} />
+        <Image src={`${image}`} width={100} height={100} className="mx-auto rounded-lg" alt={""} />
       </div>
 
-      <h2 className="text-2xl font-bold text-[#5B2C8B] mb-2">{item.title}</h2>
+      <h2 className="text-2xl font-bold text-[#5B2C8B] mb-2">{title}</h2>
 
       <ul className="text-[#836B97] font-semibold text-base mb-4 space-y-1">
-        {item.featureList.map((feature, index) => (
+        {featureList.map((feature, index) => (
           <li key={index}>{`• ${feature}`}</li>
         ))}
       </ul>
 
       <p className="text-[#7A5C9C] text-2xl font-bold mb-4">
-        {priceDisplay(item.price)}
+        {priceDisplay(price)}
       </p>
 
-      </Link>
       <AddToCartButton
-       item={item}
+        image={image}
+        title={title}
+        featureList={featureList}
+        price={price}
       />
     </div>
   );
