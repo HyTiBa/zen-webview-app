@@ -1,10 +1,10 @@
 import { redirect } from "next/navigation";
 import crypto from "crypto";
 // import Slack from "@slack/bolt";
-import dotenv from "dotenv";
+// import dotenv from "dotenv";
 // import { CartItem } from "@/contexts/cartContext";
 
-dotenv.config();
+// dotenv.config();
 export const dynamic = 'force-dynamic';
 const MomoPage = async (
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -1,7 +1,6 @@
 "use client"
 import { CartItem } from '@/contexts/cartContext'
 import { Cart } from '@/functions/CartFunctions';
-import { Button, Card, CardContent } from '@mui/material';
 import Link from 'next/link';
 import React, { useState } from 'react'
 import Image from 'next/image';
@@ -20,8 +19,8 @@ const CartCardContent = ({getCart}:{getCart:CartItem[]}) => {
   return (
     <div className="p-4 max-w-md mx-auto">
     {cart.map((item, index) => (
-      <Card key={index} className="mb-4">
-        <CardContent className="flex items-center justify-between">
+      <div key={index} className="mb-4">
+        <div className="flex items-center justify-between">
           <div className="flex items-center">
             <Image width={100} height={80} src={`${item.image}`} alt={""} />
             <div>
@@ -32,27 +31,26 @@ const CartCardContent = ({getCart}:{getCart:CartItem[]}) => {
             </div>
           </div>
           <div className="flex items-center space-x-2">
-            <Button
+            <div
               onClick={() => {
                 updateQuantity(index, -1);
                 Cart.updateQuantity(item, -1);
               }}
-              disabled={item.amount === 0}
             >
               -
-            </Button>
+            </div>
             <span className="font-medium">{item.amount}</span>
-            <Button
+            <div
               onClick={() => {
                 updateQuantity(index, 1);
                 Cart.updateQuantity(item, 1);
               }}
             >
               +
-            </Button>
+            </div>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     ))}
     <Link href={"/checkout"}>
       <div className="flex justify-center">

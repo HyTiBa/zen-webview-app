@@ -1,6 +1,5 @@
 "use client";
 import { Cart } from "@/functions/CartFunctions";
-import { Card, CardContent } from "@mui/material";
 import CheckoutForm from "./CheckoutForm";
 import { useEffect, useState } from "react";
 import { CartItem } from "@/contexts/cartContext";
@@ -18,8 +17,8 @@ const CheckoutPage = () => {
 
   return (
     <div className="p-4 max-w-lg mx-auto">
-      <Card className="mb-4">
-        <CardContent>
+      <div className="mb-4">
+        <div>
           <div className="text-center mb-4">
             <h2 className="text-xl font-semibold text-orange-500">Summary</h2>
           </div>
@@ -38,8 +37,8 @@ const CheckoutPage = () => {
             <span className="text-gray-700 font-bold">TOTAL:</span>
             <span className="text-gray-900 font-bold">${total.toFixed(2)}</span>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
       <CheckoutForm cart={cart} total={total} />
     </div>
   );

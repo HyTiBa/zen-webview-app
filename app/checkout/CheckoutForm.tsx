@@ -1,5 +1,4 @@
 "use client";
-import { Card, CardContent, Input } from "@mui/material";
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,8 +17,8 @@ const CheckoutForm = ({cart,total}:{cart:CartItem[],total:number}) => {
   return (
     <>
       {showPopup == true ? (
-        <Card className="mb-4 absolute">
-          <CardContent>
+        <div className="mb-4 absolute">
+          <div>
             <p>{popupMessage}</p>
             <button
               onClick={() => {
@@ -28,12 +27,12 @@ const CheckoutForm = ({cart,total}:{cart:CartItem[],total:number}) => {
             >
               ok
             </button>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       ) : null}
 
-      <Card className="mb-4">
-        <CardContent>
+      <div className="mb-4">
+        <div>
           <div className="flex justify-center space-x-4 mb-4">
             <label htmlFor="" className="flex flex-row">
               <input
@@ -49,15 +48,15 @@ const CheckoutForm = ({cart,total}:{cart:CartItem[],total:number}) => {
             </label>
             {/* <input type="radio" value={"card"} onClick={() => { setPayment("card") }} checked={paymentType == "card"} /> */}
           </div>
-        </CardContent>
-      </Card>
-      <Card>
-        <CardContent>
+        </div>
+      </div>
+      <div>
+        <div>
           <div className="mb-4">
             <label className="block text-gray-600 text-sm font-medium mb-1">
               Name
             </label>
-            <Input
+            <input
               onChange={(e) => {
                 setName(e.target.value);
               }}
@@ -103,7 +102,7 @@ const CheckoutForm = ({cart,total}:{cart:CartItem[],total:number}) => {
                 <label className="block text-gray-600 text-sm font-medium mb-1">
                   Phone Number
                 </label>
-                <Input
+                <input
                   onChange={(e) => {
                     setPhoneNumber(e.target.value);
                   }}
@@ -119,7 +118,7 @@ const CheckoutForm = ({cart,total}:{cart:CartItem[],total:number}) => {
                 <label className="block text-gray-600 text-sm font-medium mb-1">
                   Address
                 </label>
-                <Input
+                <input
                   onChange={(e) => {
                     setAddress(e.target.value);
                   }}
@@ -134,7 +133,7 @@ const CheckoutForm = ({cart,total}:{cart:CartItem[],total:number}) => {
               <label className="block text-gray-600 text-sm font-medium mb-1">
                 Email
               </label>
-              <Input
+              <input
                 onChange={(e) => {
                   setEmail(e.target.value);
                 }}
@@ -143,8 +142,8 @@ const CheckoutForm = ({cart,total}:{cart:CartItem[],total:number}) => {
               />
             </div>
           ) : null}
-        </CardContent>
-      </Card>
+        </div>
+      </div>
       <div className="mt-6 flex justify-center">
         <LinkToMomo
           cart={cart}

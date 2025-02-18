@@ -1,6 +1,5 @@
 "use client";
 import Main from "@/components/Main";
-import { Button, Card, CardContent } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Cart } from "@/functions/CartFunctions";
@@ -27,8 +26,8 @@ const CartPage = () => {
     <Main>
       <div className="p-4 max-w-md mx-auto">
         {cart.map((item: CartItem, index: number) => (
-          <Card key={index} className="mb-4">
-            <CardContent className="flex items-center justify-between">
+          <div key={index} className="mb-4">
+            <div className="flex items-center justify-between">
               <div className="flex items-center">
                 <Image width={100} height={80} src={`${item.image}`} alt={""} />
                 <div>
@@ -39,7 +38,7 @@ const CartPage = () => {
                 </div>
               </div>
               <div className="flex items-center space-x-2">
-                <Button
+                <button
                   onClick={() => {
                     updateQuantity(index, -1);
                     Cart.updateQuantity(item, -1);
@@ -47,19 +46,19 @@ const CartPage = () => {
                   disabled={item.amount === 0}
                 >
                   -
-                </Button>
+                </button>
                 <span className="font-medium">{item.amount}</span>
-                <Button
+                <button
                   onClick={() => {
                     updateQuantity(index, 1);
                     Cart.updateQuantity(item, 1);
                   }}
                 >
                   +
-                </Button>
+                </button>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         ))}
         <Link href={"/checkout"}>
           <div className="flex justify-center">
