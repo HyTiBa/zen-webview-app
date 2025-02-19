@@ -3,14 +3,17 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Cart } from "@/functions/CartFunctions";
-import { CartItem } from "@/contexts/cartContext";
-const CheckoutForm = ({cart,total}:{cart:CartItem[],total:number}) => {
+const CheckoutForm = ({total}:{total:number}) => {
   const [paymentType, setPayment] = useState("momo");
   const [delivery, setDelivery] = useState("zalo");
   const [showPopup, setShowPopup] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [name, setName] = useState("");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [email, setEmail] = useState("");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [phoneNumber, setPhoneNumber] = useState("");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [address, setAddress] = useState("");
   const [popupMessage, setPopupMessage] = useState("");
 
@@ -146,12 +149,8 @@ const CheckoutForm = ({cart,total}:{cart:CartItem[],total:number}) => {
       </div>
       <div className="mt-6 flex justify-center">
         <LinkToMomo
-          cart={cart}
           total={total}
-          name={name}
-          email={email}
-          address={address}
-          phoneNumber={phoneNumber}
+         
         />
       </div>
     </>
@@ -162,18 +161,10 @@ export default CheckoutForm;
 
 const LinkToMomo = ({
   total,
-  name,
-  cart,
-  email,
-  address,
-  phoneNumber,
+
 }: {
-  name: string;
   total: number;
-  cart: CartItem[];
-  email: string;
-  address: string;
-  phoneNumber: string;
+  
 }) => {
   return (
     <Link
@@ -181,11 +172,7 @@ const LinkToMomo = ({
         pathname: "/momo",
         query: {
           total: total,
-          email: email,
-          address: address,
-          phoneNumber: phoneNumber,
-          name: name,
-          cart: JSON.stringify(cart),
+         
         },
       }}
     >

@@ -39,7 +39,7 @@ const CheckoutPage = () => {
           </div>
         </div>
       </div>
-      <CheckoutForm cart={cart} total={total} />
+      <CheckoutForm total={total} />
     </div>
   );
 };
