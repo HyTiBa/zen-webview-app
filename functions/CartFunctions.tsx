@@ -30,7 +30,6 @@ function itemAlreadyInCart(item: CartItem): boolean {
 
 function updateQuantity(item: CartItem, amount: number): void {
   const cart = getCart();
-  console.log(itemAlreadyInCart(item));
 
   let itemToRemove: CartItem |null = null;
   if (itemAlreadyInCart(item)) {

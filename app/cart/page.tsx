@@ -40,8 +40,8 @@ const CartPage = () => {
               <div className="flex items-center space-x-2">
                 <button
                   onClick={() => {
-                    updateQuantity(index, -1);
                     Cart.updateQuantity(item, -1);
+                    updateQuantity(index, -1);
                   }}
                   disabled={item.amount === 0}
                 >
@@ -50,8 +50,8 @@ const CartPage = () => {
                 <span className="font-medium">{item.amount}</span>
                 <button
                   onClick={() => {
-                    updateQuantity(index, 1);
                     Cart.updateQuantity(item, 1);
+                    updateQuantity(index, 1);
                   }}
                 >
                   +

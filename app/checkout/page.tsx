@@ -6,14 +6,20 @@ import { CartItem } from "@/contexts/cartContext";
 
 const CheckoutPage = () => {
   let getCart: CartItem[] = [];
+  const [total,setTotal] = useState(0);
   useEffect(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     getCart = Cart.getCart();
+    let totalprice = 0;
+    getCart.forEach((item) => {
+      totalprice += item.price * item.amount;
+    });
+    setTotal(totalprice);
     setCart(getCart);
   }, []);
   const [cart, setCart] = useState(getCart);
+ 
 
-  const total = cart.reduce((sum, item) => sum + item.price, 0);
 
   return (
     <div className="p-4 max-w-lg mx-auto">
@@ -29,7 +35,7 @@ const CheckoutPage = () => {
             >
               <span className="text-gray-700">{item.title}</span>
               <span className="text-gray-900 font-medium">
-                ${item.price.toFixed(2)}
+                ${item.price * item.amount}
               </span>
             </div>
           ))}

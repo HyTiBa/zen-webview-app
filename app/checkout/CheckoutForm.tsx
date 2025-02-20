@@ -3,17 +3,14 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Cart } from "@/functions/CartFunctions";
-const CheckoutForm = ({total}:{total:number}) => {
+import "./style.css";
+const CheckoutForm = ({ total }: { total: number }) => {
   const [paymentType, setPayment] = useState("momo");
   const [delivery, setDelivery] = useState("zalo");
   const [showPopup, setShowPopup] = useState(false);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [name, setName] = useState("");
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [email, setEmail] = useState("");
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [phoneNumber, setPhoneNumber] = useState("");
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [address, setAddress] = useState("");
   const [popupMessage, setPopupMessage] = useState("");
 
@@ -73,6 +70,8 @@ const CheckoutForm = ({total}:{total:number}) => {
                 type="radio"
                 onChange={() => {
                   setDelivery("zalo");
+                  setAddress("");
+                  setEmail("");
                 }}
                 checked={delivery == "zalo"}
               />
@@ -82,9 +81,11 @@ const CheckoutForm = ({total}:{total:number}) => {
               <input
                 type="radio"
                 onChange={() => {
-                  setDelivery("mail");
+                  setDelivery("email");
+                  setAddress("");
+                  setPhoneNumber("");
                 }}
-                checked={delivery == "mail"}
+                checked={delivery == "email"}
               />
               <Image width={50} height={50} src={"/mail.png"} alt={""} />
             </label>
@@ -93,6 +94,8 @@ const CheckoutForm = ({total}:{total:number}) => {
                 type="radio"
                 onChange={() => {
                   setDelivery("deliver");
+                  setEmail("");
+                  setPhoneNumber("");
                 }}
                 checked={delivery == "deliver"}
               />
@@ -131,7 +134,7 @@ const CheckoutForm = ({total}:{total:number}) => {
               </div>
             </div>
           ) : null}
-          {delivery === "mail" ? (
+          {delivery === "email" ? (
             <div className="mb-4">
               <label className="block text-gray-600 text-sm font-medium mb-1">
                 Email
@@ -150,7 +153,10 @@ const CheckoutForm = ({total}:{total:number}) => {
       <div className="mt-6 flex justify-center">
         <LinkToMomo
           total={total}
-         
+          email={email}
+          address={address}
+          phoneNumber={phoneNumber}
+          name={name}
         />
       </div>
     </>
@@ -161,18 +167,28 @@ export default CheckoutForm;
 
 const LinkToMomo = ({
   total,
-
+  email,
+  address,
+  phoneNumber,
+  name,
 }: {
   total: number;
-  
+  email: string;
+  address: string;
+  name: string;
+  phoneNumber: string;
 }) => {
   return (
     <Link
+      replace
       href={{
         pathname: "/momo",
         query: {
+          email: email,
+          address: address,
+          name: name,
+          phoneNumber: phoneNumber,
           total: total,
-         
         },
       }}
     >
