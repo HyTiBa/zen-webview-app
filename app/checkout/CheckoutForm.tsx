@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Cart } from "@/functions/CartFunctions";
 import "./style.css";
+import { CartItem } from "@/contexts/cartContext";
 const CheckoutForm = ({ total }: { total: number }) => {
   const [paymentType, setPayment] = useState("momo");
   const [delivery, setDelivery] = useState("zalo");
@@ -46,7 +47,6 @@ const CheckoutForm = ({ total }: { total: number }) => {
               />
               <Image width={50} height={50} src={"/momo.png"} alt={""} />
             </label>
-            {/* <input type="radio" value={"card"} onClick={() => { setPayment("card") }} checked={paymentType == "card"} /> */}
           </div>
         </div>
       </div>
@@ -155,6 +155,7 @@ const CheckoutForm = ({ total }: { total: number }) => {
           total={total}
           email={email}
           address={address}
+          cart={Cart.getCart()}
           phoneNumber={phoneNumber}
           name={name}
         />
@@ -170,6 +171,7 @@ const LinkToMomo = ({
   email,
   address,
   phoneNumber,
+  cart,
   name,
 }: {
   total: number;
@@ -177,6 +179,7 @@ const LinkToMomo = ({
   address: string;
   name: string;
   phoneNumber: string;
+  cart: CartItem[];
 }) => {
   return (
     <Link
@@ -189,6 +192,7 @@ const LinkToMomo = ({
           name: name,
           phoneNumber: phoneNumber,
           total: total,
+          cart: JSON.stringify(cart),
         },
       }}
     >
